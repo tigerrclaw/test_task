@@ -1,0 +1,38 @@
+name: tests
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  unit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r requirements.txt
+      - name: Run tests
+        run: ./run_tests.sh
+        env:
+          PYTHONPATH: src
+      - name: Mocked LLM tests
+        run: python -m pytest tests/test_mock_llm.py -q -m mock_llm
+        env:
+          PYTHONPATH: src
+
+  docker:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build image
+        run: docker build -t hotwork:ci .
+      - name: Run tests inside image
+        run: docker run --rm --entrypoint ./run_tests.sh hotwork:ci
+      - name: Mocked LLM tests inside image
+        run: >
+          docker run --rm
+          --entrypoint python
+          hotwork:ci
+          -m pytest tests/test_mock_llm.py -q -m mock_llm

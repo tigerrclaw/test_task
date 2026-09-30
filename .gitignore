@@ -1,0 +1,29 @@
+# Python
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.eggs/
+dist/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Secrets / local env
+.env
+.env.local
+.env.*.local
+
+# Local tooling / OS
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+*.log
+
+# Local runs and scratch
+build/

@@ -1,0 +1,11 @@
+{
+  "version": "fire-works-1",
+  "work_date": "2026-10-15",
+  "instruction_max_age_months": 6,
+  "hazard_distance_m": 10,
+  "max_wind_ms": 10,
+  "height_threshold_m": 1.8,
+  "max_text_chars": 12000,
+  "approximate_margin_ratio": 0.15,
+  "approximate_margin_abs": 0.3
+}

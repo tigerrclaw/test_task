@@ -1,0 +1,110 @@
+{
+  "kind": "manual_request",
+  "started_at": "2026-09-30T21:13:50.844410+00:00",
+  "finished_at": "2026-09-30T21:13:57.361371+00:00",
+  "count": 1,
+  "applications": [
+    {
+      "id": "manual",
+      "timestamp": "2026-09-30T21:13:50.844427+00:00",
+      "input_text": "НД-142, мелкая сварка в боксе, минут на 15. Инструктаж 05.09.2026. Огнетушитель под рукой, работаю один, чтобы не отвлекать людей.",
+      "input_truncated_in_journal": false,
+      "input_length": 130,
+      "regulation_version": "fire-works-1",
+      "regulation": {
+        "version": "fire-works-1",
+        "work_date": "2026-10-15",
+        "instruction_max_age_months": 6,
+        "hazard_distance_m": 10.0,
+        "max_wind_ms": 10.0,
+        "height_threshold_m": 1.8,
+        "max_text_chars": 12000,
+        "approximate_margin_ratio": 0.15,
+        "approximate_margin_abs": 0.3
+      },
+      "prompt_version": "v4",
+      "model": "gpt-6-astra",
+      "used_fallback": false,
+      "primary_error": null,
+      "llm_calls": [
+        {
+          "provider": "основной",
+          "model": "gpt-6-astra",
+          "attempt": 1,
+          "error": null
+        }
+      ],
+      "raw_llm_response": "{\"approval\":\"absent\",\"distance_m\":null,\"distance_precision\":\"unknown\",\"extinguisher_present\":true,\"hazard_present\":false,\"height_is_unclear\":false,\"height_m\":null,\"height_permit_present\":null,\"height_precision\":\"unknown\",\"instruction_date\":\"2026-09-05\",\"location\":\"indoor\",\"observer_is_worker\":null,\"observer_present\":false,\"permit_explicitly_absent\":false,\"permit_number\":\"НД-142\",\"wind_precision\":\"unknown\",\"wind_speed_ms\":null}",
+      "facts": {
+        "permit_number": "НД-142",
+        "permit_explicitly_absent": false,
+        "instruction_date": "2026-09-05",
+        "hazard_present": false,
+        "distance_m": null,
+        "distance_precision": "unknown",
+        "approval": "absent",
+        "extinguisher_present": true,
+        "observer_present": false,
+        "observer_is_worker": null,
+        "location": "indoor",
+        "wind_speed_ms": null,
+        "wind_precision": "unknown",
+        "height_m": null,
+        "height_precision": "unknown",
+        "height_is_unclear": false,
+        "height_permit_present": null
+      },
+      "parse_error": null,
+      "rule_results": [
+        {
+          "rule_id": "П1",
+          "status": "pass",
+          "reason": "Указан наряд НД-142.",
+          "missing": []
+        },
+        {
+          "rule_id": "П2",
+          "status": "pass",
+          "reason": "Инструктаж 05.09.2026 не раньше порога 15.04.2026 (6 месяцев до 15.10.2026).",
+          "missing": []
+        },
+        {
+          "rule_id": "П3",
+          "status": "pass",
+          "reason": "Рядом нет склада угля или ГСМ.",
+          "missing": []
+        },
+        {
+          "rule_id": "П4",
+          "status": "fail",
+          "reason": "Наблюдающего нет: работу выполняет один человек.",
+          "missing": []
+        },
+        {
+          "rule_id": "П5",
+          "status": "pass",
+          "reason": "Работы в помещении, ограничение по ветру не применяется.",
+          "missing": []
+        },
+        {
+          "rule_id": "П6",
+          "status": "pass",
+          "reason": "Работы на высоте более 1,8 м в заявке не заявлены.",
+          "missing": []
+        }
+      ],
+      "latency_ms": 6000.914017000468,
+      "usage": {
+        "prompt_tokens": 1288,
+        "completion_tokens": 217
+      },
+      "skipped_llm": null,
+      "decision": "ОТКАЗАТЬ",
+      "rules": [
+        "П4"
+      ],
+      "explanation": "Наблюдающего нет: работу выполняет один человек.",
+      "missing": []
+    }
+  ]
+}
