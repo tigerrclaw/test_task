@@ -92,6 +92,8 @@ def test_prompt_treats_nd_as_permit_number():
     assert "НД-114" in SYSTEM_PROMPT
     assert "номер наряда-допуска" in SYSTEM_PROMPT
     assert "ОП-5" in SYSTEM_PROMPT
+    assert "эстакад" in SYSTEM_PROMPT
+    assert "location=outdoor" in SYSTEM_PROMPT
 
 
 def test_request_uses_strict_json_schema():

@@ -7,7 +7,7 @@ from dataclasses import dataclass
 from hotwork.llm import LLMClient, LLMError
 from hotwork.models import Facts, ParseError, parse_facts
 
-PROMPT_VERSION = "v4"
+PROMPT_VERSION = "v5"
 REACH_BACKOFF_SECONDS = (10, 20, 30)
 JITTER_MAX_SECONDS = 5.0
 
@@ -30,7 +30,7 @@ SYSTEM_PROMPT = """Ты извлекаешь факты из заявки на �
 
 Место работ:
 - «в боксе», «в цехе», «в мастерской», «в помещении» — location=indoor;
-- «на площадке», «на открытой площадке», «на улице» — location=outdoor, даже если площадка рядом с мастерской;
+- «на площадке», «на открытой площадке», «на улице», «на эстакаде», «эстакада конвейера» — location=outdoor, даже если площадка рядом с мастерской;
 - если одно и то же место названо и помещением, и открытой площадкой — location=contradictory.
 
 Склад угля или ГСМ:

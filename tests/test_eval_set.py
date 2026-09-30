@@ -44,7 +44,7 @@ def test_report_lists_tokens_and_latency_for_each_case():
         ],
         model="m",
         regulation_version="fire-works-1",
-        prompt_version="v4",
+        prompt_version="v5",
     )
     assert "| `1` | 10 | 4 | 1.50 |" in text
     assert "| `c14` | не вызывалась | не вызывалась | не вызывалась |" in text
